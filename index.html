@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gym Progress Tracker - Hardcore Iron</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-title">
+      <span>⚡</span> HARDCORE<span>IRON</span>
+    </div>
+    <div class="streak-pill">
+      <span>🔥</span>
+      <span id="streak-counter-val">2</span> DAYS
+    </div>
+  </header>
+
+  <!-- App Main Shell Views Container -->
+  <main class="main-shell">
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="tab-dashboard" class="tab-screen active">
+      <div class="card neon-border">
+        <div class="section-title">
+          <span>DAILY DASHBOARD</span>
+          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-lime);">ACTIVE SESSION</span>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem;">
+          Track your workouts with No-Keyboard touch steppers, fast set logging, and dynamic volume calculation.
+        </p>
+        <button class="btn-primary" id="dashboard-start-btn">
+          <span>⚡</span> START WORKOUT SESSION
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="section-title">28-DAY WORKOUT MATRIX</div>
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 10px;">
+          <div style="aspect-ratio: 1; background: var(--neon-lime); border-radius: 6px; box-shadow: 0 0 10px var(--neon-lime-glow);"></div>
+          <div style="aspect-ratio: 1; background: var(--neon-lime); border-radius: 6px; box-shadow: 0 0 10px var(--neon-lime-glow);"></div>
+          <div style="aspect-ratio: 1; background: var(--bg-surface); border-radius: 6px;"></div>
+          <div style="aspect-ratio: 1; background: var(--neon-lime); border-radius: 6px; box-shadow: 0 0 10px var(--neon-lime-glow);"></div>
+          <div style="aspect-ratio: 1; background: var(--bg-surface); border-radius: 6px;"></div>
+          <div style="aspect-ratio: 1; background: var(--neon-lime); border-radius: 6px; box-shadow: 0 0 10px var(--neon-lime-glow);"></div>
+          <div style="aspect-ratio: 1; background: var(--neon-lime); border-radius: 6px; box-shadow: 0 0 10px var(--neon-lime-glow);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: ROUTINES -->
+    <section id="tab-routines" class="tab-screen">
+      <div class="card neon-border">
+        <div class="section-title">PRE-BUILT ROUTINES</div>
+        
+        <div class="routine-item">
+          <div>
+            <div style="font-weight: 800;">🔥 Push Day (Chest / Shoulders / Triceps)</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">Bench Press, OHP, Incline DB, Tricep Dips</div>
+          </div>
+          <span style="color: var(--neon-lime); font-weight: 800; font-size: 0.85rem;">START ➔</span>
+        </div>
+
+        <div class="routine-item">
+          <div>
+            <div style="font-weight: 800;">⚡ Pull Day (Back / Biceps / Rear Delts)</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">Deadlift, Rows, Lat Pulldown, Curls</div>
+          </div>
+          <span style="color: var(--neon-lime); font-weight: 800; font-size: 0.85rem;">START ➔</span>
+        </div>
+
+        <div class="routine-item">
+          <div>
+            <div style="font-weight: 800;">🦵 Leg Day (Quads / Hamstrings / Calves)</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">Squat, RDL, Leg Press, Calf Raises</div>
+          </div>
+          <span style="color: var(--neon-lime); font-weight: 800; font-size: 0.85rem;">START ➔</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: AI COACH -->
+    <section id="tab-coach" class="tab-screen">
+      <div class="card neon-border">
+        <div class="section-title">
+          <span>IRON MIND AI COACH</span>
+          <span style="font-size: 0.75rem; color: var(--neon-cyan);">POWERED BY GEMINI</span>
+        </div>
+
+        <div class="chat-container">
+          <div class="chat-bubble coach">
+            ⚡ **Welcome lifter!** I am **Iron Mind**, your strength AI coach. Ask me anything about programming, lifting form, hypertrophy, or progressive overload protocols!
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px;">
+          <input type="text" style="flex: 1; background: var(--bg-surface); border: 1px solid var(--border-light); color: #fff; padding: 12px 16px; border-radius: var(--radius-md); font-family: var(--font-body); font-size: 0.9rem;" placeholder="Ask Iron Mind coach..." />
+          <button class="btn-primary" style="width: 50px; height: 46px; padding: 0;">➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: ACHIEVEMENTS -->
+    <section id="tab-achievements" class="tab-screen">
+      <div class="card neon-border">
+        <div class="section-title">STREAKS & ACHIEVEMENTS</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+          <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">CURRENT STREAK</div>
+            <div style="font-family: var(--font-mono); font-size: 2rem; font-weight: 900; color: var(--neon-lime);">2 DAYS</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-md); text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">BEST STREAK</div>
+            <div style="font-family: var(--font-mono); font-size: 2rem; font-weight: 900; color: var(--neon-cyan);">5 DAYS</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div style="background: rgba(204, 255, 0, 0.08); border: 1px solid var(--neon-lime); padding: 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 1.6rem;">🔥</div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.95rem;">Iron Will</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">3-day workout streak</div>
+          </div>
+          <div style="background: rgba(204, 255, 0, 0.08); border: 1px solid var(--neon-lime); padding: 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 1.6rem;">🏋️‍♂️</div>
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 0.95rem;">5K KG Club</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Lifted 5,000+ kg volume</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: PROFILE -->
+    <section id="tab-profile" class="tab-screen">
+      <div class="card neon-border">
+        <div class="section-title">USER PROFILE</div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--bg-surface); border: 2px solid var(--neon-lime); display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+            🏋️
+          </div>
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800;">Hardcore Lifter</div>
+            <div style="font-size: 0.8rem; color: var(--neon-lime);">🔥 Active Session</div>
+          </div>
+        </div>
+
+        <div class="profile-row">
+          <span>Preferred Unit</span>
+          <span style="font-family: var(--font-mono); font-weight: 800; color: var(--neon-lime);">KILOGRAMS (KG)</span>
+        </div>
+        <div class="profile-row">
+          <span>Cloud Sync</span>
+          <span style="font-family: var(--font-mono); font-weight: 800; color: var(--neon-cyan);">FIREBASE READY</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar Shell -->
+  <nav class="bottom-nav">
+    <button class="nav-tab active" data-tab="dashboard">
+      <span class="nav-icon">🏋️‍♂️</span>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-tab" data-tab="routines">
+      <span class="nav-icon">🧱</span>
+      <span>Routines</span>
+    </button>
+    <button class="nav-tab" data-tab="coach">
+      <span class="nav-icon">🤖</span>
+      <span>AI Coach</span>
+    </button>
+    <button class="nav-tab" data-tab="achievements">
+      <span class="nav-icon">🔥</span>
+      <span>Achievements</span>
+    </button>
+    <button class="nav-tab" data-tab="profile">
+      <span class="nav-icon">👤</span>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- Application Logic JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
