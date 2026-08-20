@@ -214,89 +214,49 @@ function initApp() {
   // =========================================================================
   // LOG IN LOGIC (ATTACHED DIRECTLY TO #login-btn AND #login-form)
   // =========================================================================
-  const executeLogin = async (e) => {
-    if (e) e.preventDefault(); 
-    
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-
-    clearError('login-email', 'login-email-err');
-    clearError('login-password', 'login-pass-err');
-
-    if (!email) {
-      setError('login-email', 'login-email-err', 'Email address is required.');
-      return;
-    } else if (!validateEmail(email)) {
-      setError('login-email', 'login-email-err', 'Please enter a valid email address.');
-      return;
-    }
-
-    if (!password) {
-      setError('login-password', 'login-pass-err', 'Password is required.');
-      return;
-    }
-
-    // DEMO ROUTING FALLBACK
-    if (!isFirebaseConfigured) {
-      if (email.toLowerCase().includes('admin')) {
-        showToast("Admin Authenticated (Demo). Routing to admin.html...", "success");
-        setTimeout(() => { window.location.href = "admin.html"; }, 800);
-      } else {
-        showToast("User Authenticated (Demo). Routing to dashboard.html...", "success");
-        setTimeout(() => { window.location.href = "dashboard.html"; }, 800);
-      }
-      return;
-    }
-
-    // LIVE FIREBASE AUTH & FIRESTORE ROLE ROUTING
-    try {
-      showToast("Authenticating with Firebase...", "success");
-
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("Auth Success. UID:", user.uid);
-
-      let userRole = "user";
-      try {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          console.log("Database Role Found:", userData.role);
-          if (userData.role) userRole = userData.role;
-        }
-      } catch (dbErr) {
-        console.warn("Could not read Firestore role:", dbErr);
-      }
-
-      if (email.toLowerCase().includes('admin')) {
-        userRole = "admin";
-      }
-
-      if (userRole === "admin") {
-        console.log("Routing to admin.html");
-        showToast("Admin Authenticated! Routing to Admin Command Center...", "success");
-        setTimeout(() => { window.location.href = "admin.html"; }, 500);
-      } else {
-        console.log("Routing to dashboard.html");
-        showToast("Authenticated! Routing to Dashboard...", "success");
-        setTimeout(() => { window.location.href = "dashboard.html"; }, 500);
-      }
-    } catch (error) {
-      console.error("Firebase Login Error:", error.code, error.message);
-      setError('login-password', 'login-pass-err', 'Invalid credentials.');
-      showToast("Invalid credentials.", "error");
-    }
-  };
-
   const loginBtn = document.getElementById('login-btn');
   if (loginBtn) {
-    loginBtn.addEventListener('click', executeLogin);
+    loginBtn.addEventListener('click', async (e) => {
+        e.preventDefault(); 
+        
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log("Auth Success. UID:", user.uid);
+
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const userData = docSnap.data();
+                console.log("Database Data Found:", userData);
+                
+                // THE NEW ROUTING LOGIC
+                if (userData.role === "admin") {
+                    window.location.href = "admin.html"; 
+                } else if (userData.onboardingComplete === true) {
+                    window.location.href = "dashboard.html"; 
+                } else {
+                    window.location.href = "onboarding.html"; 
+                }
+            } else {
+                console.error("No database record found for this UID!");
+                window.location.href = "onboarding.html";
+            }
+        } catch (error) {
+            console.error("Login Failed:", error.message);
+        }
+    });
   }
 
   if (loginForm) {
-    loginForm.addEventListener('submit', executeLogin);
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (loginBtn) loginBtn.click();
+    });
   }
 
   // =========================================================================
