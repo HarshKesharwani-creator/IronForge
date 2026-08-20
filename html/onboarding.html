@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRONFORGE — Athlete Calibration Protocol</title>
+  <link rel="stylesheet" href="/css/onboarding.css">
+</head>
+<body>
+
+  <!-- FIXED NEON GREEN PROGRESS BAR -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progress-bar"></div>
+  </div>
+
+  <!-- WIZARD VIEWPORT CONTAINER -->
+  <main class="wizard-viewport">
+
+    <!-- SCREEN 0: THE WELCOME GATE -->
+    <section class="wizard-screen active" id="screen-welcome">
+      <div class="screen-content">
+        <div class="step-indicator">PROTOCOL INITIALIZATION</div>
+        <h1 class="main-header">WELCOME, <span id="user-name" class="neon-glow">RECRUIT</span></h1>
+        <div class="sub-header">TO IRONFORGE</div>
+        <p class="description-text">
+          To forge your ultimate battle plan, we need your baseline stats. Answer the following questions to calibrate your protocols and unlock your dashboard.
+        </p>
+        <div class="btn-container">
+          <button type="button" class="btn-iron" id="btn-start">[INITIALIZE PROTOCOL]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 1: STEP 1 - BIOMETRICS -->
+    <section class="wizard-screen" id="screen-biometrics">
+      <div class="screen-content">
+        <div class="step-indicator">STEP 01 // BASELINE BIOMETRICS</div>
+        <h2 class="main-header">CALIBRATE SPECS</h2>
+        <p class="description-text">
+          Enter your current body metrics to compute optimal strength targets and energy expenditure.
+        </p>
+
+        <div class="input-grid">
+          <!-- Current Weight -->
+          <div class="input-card">
+            <label class="input-label" for="input-current-weight">CURRENT WEIGHT</label>
+            <div class="input-field-wrapper">
+              <input type="number" id="input-current-weight" class="input-field" placeholder="80" min="30" max="300" step="0.5">
+              <span class="input-unit">KG</span>
+            </div>
+          </div>
+
+          <!-- Target Weight -->
+          <div class="input-card">
+            <label class="input-label" for="input-target-weight">TARGET WEIGHT</label>
+            <div class="input-field-wrapper">
+              <input type="number" id="input-target-weight" class="input-field" placeholder="85" min="30" max="300" step="0.5">
+              <span class="input-unit">KG</span>
+            </div>
+          </div>
+
+          <!-- Height -->
+          <div class="input-card">
+            <label class="input-label" for="input-height">HEIGHT</label>
+            <div class="input-field-wrapper">
+              <input type="number" id="input-height" class="input-field" placeholder="180" min="100" max="250" step="1">
+              <span class="input-unit">CM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn-secondary" id="btn-back-1">[BACK]</button>
+          <button type="button" class="btn-iron" id="btn-next-biometrics">[NEXT: SET GOALS]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: STEP 2 - THE BATTLE PLAN -->
+    <section class="wizard-screen" id="screen-battle-plan">
+      <div class="screen-content">
+        <div class="step-indicator">STEP 02 // BATTLE PLAN</div>
+        <h2 class="main-header">SELECT OBJECTIVE</h2>
+        <p class="description-text">
+          Choose your primary training objective to generate algorithmic workout splits and target rep ranges.
+        </p>
+
+        <div class="cards-grid" id="battle-plan-grid">
+          <!-- Card 1 -->
+          <div class="selectable-card" data-plan="Fat Loss Strategy">
+            <div>
+              <span class="card-badge">STRATEGY 01</span>
+              <h3 class="card-title">Fat Loss Strategy</h3>
+            </div>
+            <p class="card-subtext">
+              Shed body fat while preserving lean muscle. Prioritizes high-intensity conditioning and a caloric deficit.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="selectable-card" data-plan="Hypertrophy & Muscle Gain">
+            <div>
+              <span class="card-badge">STRATEGY 02</span>
+              <h3 class="card-title">Hypertrophy & Muscle Gain</h3>
+            </div>
+            <p class="card-subtext">
+              Maximize muscle volume. Built around 5-6 day targeted muscle group splits and high-volume lifting.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="selectable-card" data-plan="Raw Strength">
+            <div>
+              <span class="card-badge">STRATEGY 03</span>
+              <h3 class="card-title">Raw Strength</h3>
+            </div>
+            <p class="card-subtext">
+              Focus purely on power. Heavy compound lifts with low repetitions and maximum weight.
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn-secondary" id="btn-back-2">[BACK]</button>
+          <button type="button" class="btn-iron" id="btn-next-battle-plan" disabled>[NEXT: EQUIPMENT]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: STEP 3 - THE ARSENAL -->
+    <section class="wizard-screen" id="screen-arsenal">
+      <div class="screen-content">
+        <div class="step-indicator">STEP 03 // THE ARSENAL</div>
+        <h2 class="main-header">SELECT EQUIPMENT</h2>
+        <p class="description-text">
+          Specify your available training environment to tailor workout routines to accessible gear.
+        </p>
+
+        <div class="cards-grid" id="arsenal-grid">
+          <!-- Option 1 -->
+          <div class="selectable-card" data-arsenal="Full Commercial Gym">
+            <div>
+              <span class="card-badge">ARSENAL 01</span>
+              <h3 class="card-title">Full Commercial Gym</h3>
+            </div>
+            <p class="card-subtext">
+              Access to everything: barbells, racks, cables, and machines.
+            </p>
+          </div>
+
+          <!-- Option 2 -->
+          <div class="selectable-card" data-arsenal="Home Gym Setup">
+            <div>
+              <span class="card-badge">ARSENAL 02</span>
+              <h3 class="card-title">Home Gym Setup</h3>
+            </div>
+            <p class="card-subtext">
+              The basics: dumbbells, an adjustable bench, and resistance bands.
+            </p>
+          </div>
+
+          <!-- Option 3 -->
+          <div class="selectable-card" data-arsenal="Minimal / Bodyweight">
+            <div>
+              <span class="card-badge">ARSENAL 03</span>
+              <h3 class="card-title">Minimal / Bodyweight</h3>
+            </div>
+            <p class="card-subtext">
+              No gear, no excuses. Pure calisthenics designed for limited space.
+            </p>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn-secondary" id="btn-back-3">[BACK]</button>
+          <button type="button" class="btn-iron" id="btn-finish" disabled>[FINISH & ENTER DASHBOARD]</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FIREBASE V10 WEB SDK (MODULAR) & ONBOARDING JS MODULE -->
+  <script type="module" src="/js/onboarding.js"></script>
+</body>
+</html>

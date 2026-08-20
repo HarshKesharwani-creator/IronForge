@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM TRACKER — Ditch The Notebook. Dominate The Iron.</title>
+  <meta name="description" content="The frictionless, zero-keyboard gym tracker built for raw performance. Driven by smart plate calculations and personalized AI intelligence.">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- FIXED TOP NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo" id="nav-logo">
+        <span class="logo-badge"></span>
+        GYM TRACKER
+      </a>
+      <a href="#login" class="nav-link-login" id="nav-login-btn">Log In</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER (SPA VIEWS) -->
+  <main>
+    <!-- VIEW 1: [MODULE-01: LANDING_PAGE] -->
+    <div id="view-landing" class="app-view active">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-container">
+          
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              ZERO-KEYBOARD GYM INTELLIGENCE
+            </div>
+            
+            <h1 class="hero-headline">
+              DITCH THE NOTEBOOK.<br>
+              <span class="text-neon">DOMINATE THE IRON.</span>
+            </h1>
+            
+            <p class="hero-subheadline">
+              The frictionless, zero-keyboard gym tracker built for raw performance. Driven by smart plate calculations and personalized AI intelligence.
+            </p>
+
+            <button class="btn-primary-cta" id="hero-cta-btn">
+              [START YOUR STREAK — FREE]
+            </button>
+          </div>
+
+          <!-- VISUAL ELEMENT: MOBILE MOCKUP CONTAINER -->
+          <div class="mockup-wrapper">
+            <div class="phone-mockup">
+              <div class="phone-header-notch"></div>
+              
+              <div class="mock-app-bar">
+                <div class="mock-app-title">
+                  <span class="mock-live-badge">ACTIVE WORKOUT</span>
+                  <span>CHEST & TRICEPS</span>
+                </div>
+                <span class="mock-timer" id="mock-timer-display">42:15</span>
+              </div>
+
+              <div class="mock-exercise-card">
+                <div class="exercise-info">
+                  <div>
+                    <div class="exercise-name">BARBELL BENCH PRESS</div>
+                    <div class="exercise-meta">Target: 225 LBS × 5 REPS</div>
+                  </div>
+                </div>
+
+                <!-- STEPPER BUTTONS DEMO -->
+                <div class="stepper-container">
+                  <button class="stepper-btn" id="stepper-minus" aria-label="Decrease weight">-</button>
+                  <div class="stepper-value-display">
+                    <span class="stepper-value" id="stepper-val">225 LBS</span>
+                    <span class="stepper-label">Smart Plate Load</span>
+                  </div>
+                  <button class="stepper-btn" id="stepper-plus" aria-label="Increase weight">+</button>
+                </div>
+
+                <!-- SETS LOGGED BAR -->
+                <div class="sets-logged-bar">
+                  <span class="sets-logged-text">
+                    Sets Logged: <span class="sets-logged-count" id="sets-logged-display">4/5</span>
+                  </span>
+                  <div class="set-dots" id="set-dots-container">
+                    <span class="set-dot completed"></span>
+                    <span class="set-dot completed"></span>
+                    <span class="set-dot completed"></span>
+                    <span class="set-dot completed"></span>
+                    <span class="set-dot"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- BOTTOM CLOSER BANNER -->
+      <section class="closer-banner">
+        <div class="banner-container">
+          <h2 class="banner-headline">
+            READY TO TRANSFORM YOUR TRAINING?
+          </h2>
+          <p class="banner-subtext">
+            Create your free account in under 30 seconds and start tracking immediately.
+          </p>
+          <button class="btn-primary-cta" id="banner-cta-btn">
+            [CLAIM YOUR FREE ACCOUNT]
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: [MODULE-02: AUTH_HUB] -->
+    <div id="view-auth" class="app-view">
+      <section class="auth-section">
+        <div class="auth-container">
+          
+          <!-- FLOATING AUTH CARD -->
+          <div class="auth-card">
+            <button class="auth-close-btn" id="auth-close-btn" title="Back to Home">&times;</button>
+
+            <div class="auth-header">
+              <h2 class="auth-title">ATHLETE ACCESS</h2>
+              <p class="auth-subtitle">Zero friction. Maximum gains.</p>
+            </div>
+
+            <!-- MODE TOGGLE TABS -->
+            <div class="auth-tabs" role="tablist">
+              <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="login-form">
+                LOG IN
+              </button>
+              <button class="auth-tab" id="tab-signup" role="tab" aria-selected="false" aria-controls="signup-form">
+                SIGN UP
+              </button>
+            </div>
+
+            <div class="auth-body">
+              <!-- 1. LOG IN FORM -->
+              <form id="login-form" class="auth-form active" novalidate>
+                <div class="form-group">
+                  <label for="login-email" class="form-label">Email Address</label>
+                  <input type="email" id="login-email" class="form-input" placeholder="athlete@iron.com" required>
+                  <span class="error-msg" id="login-email-err"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="login-password" class="form-label">Password</label>
+                  <div class="input-password-wrapper">
+                    <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+                    <button type="button" class="password-toggle-btn" id="toggle-login-pass" aria-label="Toggle password visibility">
+                      <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                  <span class="error-msg" id="login-pass-err"></span>
+                </div>
+
+                <div class="form-actions-row">
+                  <a href="#forgot" class="forgot-pass-link" id="forgot-pass-btn">Forgot Password?</a>
+                </div>
+
+                <!-- ID 'login-btn' EXACT MATCH FOR JAVASCRIPT EVENT LISTENER -->
+                <button type="submit" class="btn-primary-cta auth-submit-btn" id="login-btn">
+                  [LOG IN]
+                </button>
+              </form>
+
+              <!-- 2. SIGN UP FORM -->
+              <form id="signup-form" class="auth-form" novalidate>
+                <div class="form-group">
+                  <label for="signup-name" class="form-label">Full Name</label>
+                  <input type="text" id="signup-name" class="form-input" placeholder="Ronnie Coleman" required>
+                  <span class="error-msg" id="signup-name-err"></span>
+                </div>
+
+                <div class="form-row-2col">
+                  <!-- BIRTHDATE WITH DD/MM/YYYY FORMAT -->
+                  <div class="form-group">
+                    <label for="signup-dob" class="form-label">Birthdate (DD/MM/YYYY)</label>
+                    <input type="text" id="signup-dob" class="form-input" placeholder="DD/MM/YYYY" maxlength="10" inputmode="numeric" required>
+                    <span class="error-msg" id="signup-dob-err"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="signup-email" class="form-label">Email Address</label>
+                    <input type="email" id="signup-email" class="form-input" placeholder="ronnie@iron.com" required>
+                    <span class="error-msg" id="signup-email-err"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="signup-address" class="form-label">Full Address</label>
+                  <input type="text" id="signup-address" class="form-input" placeholder="123 Iron Gym Blvd, Austin, TX 78701" required>
+                  <span class="error-msg" id="signup-address-err"></span>
+                </div>
+
+                <div class="form-row-2col">
+                  <div class="form-group">
+                    <label for="signup-password" class="form-label">Password</label>
+                    <div class="input-password-wrapper">
+                      <input type="password" id="signup-password" class="form-input" placeholder="••••••••" required>
+                      <button type="button" class="password-toggle-btn" id="toggle-signup-pass" aria-label="Toggle password visibility">
+                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                      </button>
+                    </div>
+                    <span class="error-msg" id="signup-pass-err"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="signup-confirm-password" class="form-label">Confirm Password</label>
+                    <div class="input-password-wrapper">
+                      <input type="password" id="signup-confirm-password" class="form-input" placeholder="••••••••" required>
+                      <button type="button" class="password-toggle-btn" id="toggle-signup-confirm-pass" aria-label="Toggle confirm password visibility">
+                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                      </button>
+                    </div>
+                    <span class="error-msg" id="signup-confirm-err"></span>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary-cta auth-submit-btn" id="signup-btn">
+                  [CREATE ACCOUNT]
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION FEEDBACK -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- MINIMALIST FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <nav class="footer-nav">
+        <a href="#features" class="footer-link">Features</a>
+        <a href="#privacy" class="footer-link">Privacy Policy</a>
+        <a href="#terms" class="footer-link">Terms of Service</a>
+        <a href="#github" class="footer-link">GitHub</a>
+      </nav>
+      <p class="footer-microcopy">
+        Built with the Hardcore Iron stack.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM TRACKER — Admin Command Center</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <div class="admin-app">
+    <!-- 1. LEFT SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <span class="logo-dot"></span>
+          <span class="brand-text">GYM TRACKER <span class="neon-badge">ADMIN</span></span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">MAIN COMMAND</div>
+        <a href="#overview" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Overview</span>
+        </a>
+
+        <a href="#users" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span>Athletes</span>
+        </a>
+
+        <a href="#analytics" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Analytics</span>
+        </a>
+
+        <div class="nav-section-label" style="margin-top: 16px;">SYSTEM</div>
+        <a href="#settings" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="nav-item logout-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Exit Admin</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+      <!-- 2. TOP BAR -->
+      <header class="topbar">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <!-- REAL-TIME FILTER INPUT -->
+          <input type="text" id="admin-search-input" class="search-input" placeholder="Search athlete by name or email...">
+        </div>
+
+        <div class="topbar-right">
+          <!-- REAL-TIME SERVER CLOCK -->
+          <div class="server-time-box">
+            <span class="time-label">SERVER UTC:</span>
+            <span class="time-value" id="server-time">00:00:00 UTC</span>
+          </div>
+
+          <div class="admin-profile-tag">
+            <span class="status-indicator"></span>
+            <span class="admin-name">ADMIN COMMANDER</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 3. MAIN CONTENT AREA -->
+      <main class="content-container">
+        
+        <!-- HIGH-LEVEL METRICS GRID -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-header">
+              <span class="metric-title">TOTAL REGISTERED ATHLETES</span>
+              <span class="metric-badge green">FIRESTORE</span>
+            </div>
+            <!-- DYNAMIC METRIC VALUE -->
+            <div class="metric-value" id="total-users-val">0</div>
+            <div class="metric-subtext">Active accounts in database</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span class="metric-title">ACTIVE WORKOUT SESSIONS</span>
+              <span class="metric-badge live">LIVE</span>
+            </div>
+            <div class="metric-value">42</div>
+            <div class="metric-subtext">Currently lifting in gym</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span class="metric-title">SYSTEM STATUS</span>
+              <span class="metric-badge green">ONLINE</span>
+            </div>
+            <div class="metric-value">99.9%</div>
+            <div class="metric-subtext">Zero downtime telemetry</div>
+          </div>
+        </div>
+
+        <!-- TABLE SECTION CARD -->
+        <div class="table-section-card">
+          <div class="table-card-header">
+            <div>
+              <h2 class="table-title">ATHLETE DIRECTORY</h2>
+              <p class="table-subtitle">Select any athlete row to open the Deep Dive Profile Panel.</p>
+            </div>
+            <span class="record-count" id="record-count">Loading records...</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ATHLETE NAME</th>
+                  <th>EMAIL ADDRESS</th>
+                  <th>JOINED DATE</th>
+                  <th>ACCOUNT STATUS</th>
+                </tr>
+              </thead>
+              <!-- DYNAMIC FIRESTORE ROWS INJECTED HERE -->
+              <tbody id="user-table-body">
+                <tr>
+                  <td colspan="4" style="text-align:center; padding: 32px; color: var(--text-muted);">
+                    Connecting to Firestore database...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- 4. DEEP DIVE PROFILE PANEL (SLIDE-OUT DRAWER OVERLAY) -->
+    <div id="drawer-overlay" class="profile-drawer-overlay"></div>
+    <aside id="profile-drawer" class="profile-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-user-heading">
+          <div class="user-avatar" id="drawer-avatar">RC</div>
+          <div>
+            <h3 class="drawer-user-name" id="drawer-name">Athlete Name</h3>
+            <span class="drawer-user-id" id="drawer-id">ID: #00000</span>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="drawer-close-btn" title="Close Panel">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- PERSONAL METRICS -->
+        <div class="drawer-section">
+          <h4 class="section-heading">
+            <span class="heading-accent"></span>
+            PERSONAL PROFILE & BIOMETRICS
+          </h4>
+
+          <div class="data-grid-2col">
+            <div class="data-item">
+              <span class="data-label">FULL NAME</span>
+              <span class="data-val" id="drawer-fullname">Ronnie Coleman</span>
+            </div>
+
+            <div class="data-item">
+              <span class="data-label">BIRTHDATE</span>
+              <span class="data-val" id="drawer-dob">13/05/1964</span>
+            </div>
+
+            <div class="data-item col-span-2 margin-top-sm">
+              <span class="data-label">EMAIL ADDRESS</span>
+              <span class="data-val highlight-email" id="drawer-email">ronnie@iron.com</span>
+            </div>
+
+            <div class="data-item col-span-2 margin-top-sm">
+              <span class="data-label">FULL ADDRESS</span>
+              <span class="data-val" id="drawer-address">123 Iron Gym Blvd, Austin, TX 78701</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- APP & GYM STATS -->
+        <div class="drawer-section">
+          <h4 class="section-heading">
+            <span class="heading-accent"></span>
+            TRAINING & TELEMETRY
+          </h4>
+
+          <div class="data-grid-3col">
+            <div class="data-item">
+              <span class="data-label">ROLE</span>
+              <span class="data-val" id="drawer-role-display">user</span>
+            </div>
+
+            <div class="data-item">
+              <span class="data-label">STATUS</span>
+              <span class="status-badge active" id="drawer-status-badge">ACTIVE</span>
+            </div>
+
+            <div class="data-item">
+              <span class="data-label">CURRENT STREAK</span>
+              <span class="data-val streak-val">14 DAYS ⚡</span>
+            </div>
+
+            <div class="data-item col-span-2 margin-top-sm">
+              <span class="data-label">PRIMARY GOAL</span>
+              <span class="data-val neon-goal">HYPERTROPHY & HEAVY IRON</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DANGER ZONE / ADMINISTRATIVE ACTIONS -->
+        <div class="drawer-section admin-controls-section">
+          <h4 class="section-heading danger-heading">
+            <span class="heading-accent red"></span>
+            ADMINISTRATIVE COMMANDS
+          </h4>
+          <p class="admin-warning-text">Execute priority override controls for this athlete profile.</p>
+
+          <div class="admin-actions-grid">
+            <button class="btn-admin-danger" id="btn-reset-pass">
+              RESET PASSWORD
+            </button>
+
+            <button class="btn-admin-danger" id="btn-suspend-user">
+              SUSPEND ACCOUNT
+            </button>
+
+            <button class="btn-admin-danger btn-delete-data" id="btn-delete-user">
+              DELETE DATA
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="admin-toast-container" class="toast-container"></div>
+  </div>
+
+  <!-- TYPE MODULE SCRIPT LOADING FOR FIREBASE V10 -->
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
